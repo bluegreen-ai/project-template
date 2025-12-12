@@ -1,5 +1,23 @@
 # Project Guidelines for Claude Code
 
+## Communication Language Policy
+
+**IMPORTANT**: The project maintainer is French-speaking, so:
+- ✅ **Conversations can be in French** (easier for communication and explanations)
+- ⚠️ **All code, documentation, comments, and commit messages MUST be in English**
+- ⚠️ **All project files (README, docs/, etc.) MUST be in English**
+
+This ensures the codebase remains accessible to international contributors while allowing comfortable communication with the maintainer.
+
+**Examples:**
+- ✅ Chat: "Peux-tu m'expliquer comment ça marche ?"
+- ✅ Code: `function calculateTotal() { /* English comments */ }`
+- ✅ Commit: "feat: add user authentication"
+- ❌ Code: `function calculerTotal() { /* commentaires français */ }`
+- ❌ Commit: "ajout: authentification utilisateur"
+
+---
+
 ## Project Type
 [Describe: Web app, CLI tool, library, API, etc.]
 

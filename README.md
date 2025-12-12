@@ -1,177 +1,177 @@
 # Claude Code Project Template 🚀
 
-Template de démarrage complet pour nouveaux projets avec Claude Code. Inclut des workflows éprouvés et des commandes slash puissantes.
+Complete starter template for new projects with Claude Code. Includes battle-tested workflows and powerful slash commands.
 
-## 📦 Contenu
+## 📦 Contents
 
-### Fichiers de configuration
-- **CLAUDE.md** - Documentation projet pour Claude Code
-- **INITIAL.md** - Template pour context engineering
-- **INITIAL_EXAMPLE.md** - Exemple d'utilisation du context engineering
+### Configuration Files
+- **CLAUDE.md** - Project documentation for Claude Code
+- **INITIAL.md** - Template for context engineering
+- **INITIAL_EXAMPLE.md** - Context engineering usage example
 
-### Commandes slash (`.claude/commands/`)
+### Slash Commands (`.claude/commands/`)
 
-#### 🔄 Workflow de base (simple)
-- `/primer` - Charger le contexte du projet
-- `/create-plan` - Créer un plan d'implémentation
-- `/execute-plan` - Exécuter un plan avec suivi
+#### 🔄 Basic Workflow (simple)
+- `/primer` - Load project context
+- `/create-plan` - Create implementation plan
+- `/execute-plan` - Execute plan with tracking
 
-#### 🎯 Workflow PIV avancé (core_piv_loop)
-- `/core_piv_loop:prime` - Analyse approfondie du codebase
-- `/core_piv_loop:plan-feature` - Planification détaillée
-- `/core_piv_loop:execute` - Exécution avec gestion de tâches
+#### 🎯 Advanced PIV Workflow (core_piv_loop)
+- `/core_piv_loop:prime` - Deep codebase analysis
+- `/core_piv_loop:plan-feature` - Detailed planning
+- `/core_piv_loop:execute` - Execution with task management
 
-#### ✅ Validation & qualité
-- `/validation:code-review` - Review de code technique
-- `/validation:code-review-fix` - Corriger les bugs trouvés en review
-- `/validation:validate` - Validation end-to-end complète
-- `/validation:validate-simple` - Validation rapide
-- `/validation:system-review` - Analyse implémentation vs plan
-- `/validation:execution-report` - Rapport d'implémentation
+#### ✅ Validation & Quality
+- `/validation:code-review` - Technical code review
+- `/validation:code-review-fix` - Fix bugs found in review
+- `/validation:validate` - Complete end-to-end validation
+- `/validation:validate-simple` - Quick validation
+- `/validation:system-review` - Implementation vs plan analysis
+- `/validation:execution-report` - Implementation report
 
-#### 🐛 Debug GitHub
-- `/github_bug_fix:rca` - Root Cause Analysis d'une issue GitHub
-- `/github_bug_fix:implement-fix` - Implémenter le fix depuis la RCA
+#### 🐛 GitHub Debugging
+- `/github_bug_fix:rca` - Root Cause Analysis of GitHub issue
+- `/github_bug_fix:implement-fix` - Implement fix from RCA
 
-#### 🛠️ Utilitaires
-- `/commit` - Créer un commit Git propre
-- `/create-prd` - Créer un Product Requirements Document
-- `/end-to-end-feature` - Développement complet autonome
+#### 🛠️ Utilities
+- `/commit` - Create clean Git commit
+- `/create-prd` - Create Product Requirements Document
+- `/end-to-end-feature` - Autonomous complete development
 
-### Agents spécialisés (`.claude/agents/`)
-- `codebase-analyst.md` - Analyse de patterns
-- `library-researcher.md` - Recherche de bibliothèques
-- `validator.md` - Spécialiste testing
+### Specialized Agents (`.claude/agents/`)
+- `codebase-analyst.md` - Pattern analysis
+- `library-researcher.md` - Library research
+- `validator.md` - Testing specialist
 
 ---
 
-## 🚀 Utilisation rapide
+## 🚀 Quick Start
 
-### Option 1: GitHub Template (Recommandé ⭐)
+### Option 1: GitHub Template (Recommended ⭐)
 
-1. **Sur GitHub, allez dans Settings de ce repo**
-2. **Cochez "Template repository"** (si pas déjà fait)
-3. **Pour créer un nouveau projet:**
-   - Allez sur https://github.com/bluegreen-ai/project-template
-   - Cliquez sur **"Use this template"** (bouton vert)
-   - Choisissez **"Create a new repository"**
-   - Nommez votre nouveau projet
-   - Toutes les commandes sont déjà là ! ✨
+1. **Go to Settings of this repo on GitHub**
+2. **Check "Template repository"** (if not already done)
+3. **To create a new project:**
+   - Go to https://github.com/bluegreen-ai/project-template
+   - Click **"Use this template"** (green button)
+   - Choose **"Create a new repository"**
+   - Name your new project
+   - All commands are already there! ✨
 
-### Option 2: Clone manuel
+### Option 2: Manual Clone
 
 ```bash
-# Cloner le template
-git clone https://github.com/bluegreen-ai/project-template.git mon-nouveau-projet
+# Clone the template
+git clone https://github.com/bluegreen-ai/project-template.git my-new-project
 
-# Se déplacer dans le projet
-cd mon-nouveau-projet
+# Navigate to the project
+cd my-new-project
 
-# Supprimer l'historique Git du template
+# Remove template Git history
 rm -rf .git
 
-# Initialiser un nouveau dépôt Git
+# Initialize new Git repository
 git init
 git add .
 git commit -m "Initial commit from template"
 
-# Personnaliser INITIAL.md et CLAUDE.md pour votre projet
+# Customize INITIAL.md and CLAUDE.md for your project
 ```
 
-### Option 3: Alias shell rapide
+### Option 3: Quick Shell Alias
 
-Ajoutez à votre `~/.zshrc` ou `~/.bashrc`:
+Add to your `~/.zshrc` or `~/.bashrc`:
 
 ```bash
 alias new-project='git clone https://github.com/bluegreen-ai/project-template.git'
 ```
 
-Puis:
+Then:
 ```bash
-new-project mon-nouveau-projet
-cd mon-nouveau-projet
+new-project my-new-project
+cd my-new-project
 rm -rf .git && git init
 ```
 
 ---
 
-## 📖 Guide des workflows
+## 📖 Workflow Guides
 
-### Workflow simple (pour débuter)
+### Simple Workflow (for beginners)
 
-**Idéal pour:** Projets simples, prototypes rapides
+**Ideal for:** Simple projects, rapid prototypes
 
 ```bash
-# 1. Charger le contexte
+# 1. Load context
 /primer
 
-# 2. Créer un plan
-/create-plan "Ajouter authentification utilisateur"
+# 2. Create a plan
+/create-plan "Add user authentication"
 
-# 3. Exécuter le plan
+# 3. Execute the plan
 /execute-plan
 
-# 4. Valider rapidement
+# 4. Quick validation
 /validation:validate-simple
 
 # 5. Commit
 /commit
 ```
 
-### Workflow PIV avancé (pour projets sérieux)
+### Advanced PIV Workflow (for serious projects)
 
-**Idéal pour:** Projets professionnels, features complexes
+**Ideal for:** Professional projects, complex features
 
 ```bash
-# 1. Analyse approfondie
+# 1. Deep analysis
 /core_piv_loop:prime
 
-# 2. Planification détaillée
-/core_piv_loop:plan-feature "Implémenter système de cache avec Redis"
+# 2. Detailed planning
+/core_piv_loop:plan-feature "Implement caching system with Redis"
 
-# 3. Exécution avec tracking
+# 3. Execution with tracking
 /core_piv_loop:execute
 
-# 4. Review de code
+# 4. Code review
 /validation:code-review
 
-# 5. Corriger si nécessaire
+# 5. Fix if necessary
 /validation:code-review-fix
 
-# 6. Validation complète
+# 6. Complete validation
 /validation:validate
 
-# 7. Commit propre
+# 7. Clean commit
 /commit
 ```
 
-### Workflow Bug Fix GitHub
+### GitHub Bug Fix Workflow
 
-**Idéal pour:** Résoudre des issues GitHub
+**Ideal for:** Resolving GitHub issues
 
 ```bash
-# 1. Analyser la root cause (depuis l'issue #42)
+# 1. Analyze root cause (from issue #42)
 /github_bug_fix:rca 42
 
-# 2. Implémenter le fix
+# 2. Implement the fix
 /github_bug_fix:implement-fix 42
 
-# 3. Valider
+# 3. Validate
 /validation:validate-simple
 
 # 4. Commit
 /commit
 ```
 
-### Workflow Feature complète (autonome)
+### Complete Feature Workflow (autonomous)
 
-**Idéal pour:** Features auto-suffisantes
+**Ideal for:** Self-contained features
 
 ```bash
-# Tout en une seule commande !
-/end-to-end-feature "Ajouter export CSV des données utilisateurs"
+# Everything in one command!
+/end-to-end-feature "Add CSV export of user data"
 
-# Cette commande fait automatiquement:
+# This command automatically does:
 # - Prime
 # - Plan
 # - Execute
@@ -181,104 +181,104 @@ rm -rf .git && git init
 
 ---
 
-## 🎯 Cas d'usage par commande
+## 🎯 Command Use Cases
 
-### Commandes de base
+### Basic Commands
 
-| Commande | Quand l'utiliser | Exemple |
-|----------|------------------|---------|
-| `/primer` | Au début d'un projet | Comprendre la structure existante |
-| `/create-plan` | Avant d'implémenter | Planifier une nouvelle feature |
-| `/execute-plan` | Après avoir un plan | Implémenter le plan créé |
+| Command | When to Use | Example |
+|---------|-------------|---------|
+| `/primer` | Start of project | Understand existing structure |
+| `/create-plan` | Before implementing | Plan a new feature |
+| `/execute-plan` | After having a plan | Implement created plan |
 
-### Commandes PIV (avancées)
+### PIV Commands (advanced)
 
-| Commande | Quand l'utiliser | Exemple |
-|----------|------------------|---------|
-| `/core_piv_loop:prime` | Analyse détaillée nécessaire | Rejoindre un projet complexe |
-| `/core_piv_loop:plan-feature` | Feature complexe | Système d'auth, API REST, etc. |
-| `/core_piv_loop:execute` | Implémentation suivie | Features avec multiple étapes |
+| Command | When to Use | Example |
+|---------|-------------|---------|
+| `/core_piv_loop:prime` | Detailed analysis needed | Join a complex project |
+| `/core_piv_loop:plan-feature` | Complex feature | Auth system, REST API, etc. |
+| `/core_piv_loop:execute` | Tracked implementation | Multi-step features |
 
-### Commandes de validation
+### Validation Commands
 
-| Commande | Quand l'utiliser | Exemple |
-|----------|------------------|---------|
-| `/validation:code-review` | Avant de commit | Review qualité/sécurité |
-| `/validation:code-review-fix` | Après review | Corriger les problèmes trouvés |
-| `/validation:validate` | Validation E2E | Tester toute la feature |
-| `/validation:validate-simple` | Check rapide | Vérification basique |
+| Command | When to Use | Example |
+|---------|-------------|---------|
+| `/validation:code-review` | Before commit | Quality/security review |
+| `/validation:code-review-fix` | After review | Fix found issues |
+| `/validation:validate` | E2E validation | Test entire feature |
+| `/validation:validate-simple` | Quick check | Basic verification |
 
-### Commandes GitHub
+### GitHub Commands
 
-| Commande | Quand l'utiliser | Exemple |
-|----------|------------------|---------|
-| `/github_bug_fix:rca` | Bug complexe | Analyser pourquoi ça crash |
-| `/github_bug_fix:implement-fix` | Après RCA | Implémenter la solution |
+| Command | When to Use | Example |
+|---------|-------------|---------|
+| `/github_bug_fix:rca` | Complex bug | Analyze why it crashes |
+| `/github_bug_fix:implement-fix` | After RCA | Implement the solution |
 
-### Commandes utilitaires
+### Utility Commands
 
-| Commande | Quand l'utiliser | Exemple |
-|----------|------------------|---------|
-| `/commit` | Créer un commit propre | Après validation réussie |
-| `/create-prd` | Documenter une feature | Avant de commencer |
-| `/end-to-end-feature` | Feature auto-suffisante | Petite feature indépendante |
+| Command | When to Use | Example |
+|---------|-------------|---------|
+| `/commit` | Create clean commit | After successful validation |
+| `/create-prd` | Document a feature | Before starting |
+| `/end-to-end-feature` | Self-contained feature | Small independent feature |
 
 ---
 
-## 🔧 Configuration post-clone
+## 🔧 Post-Clone Configuration
 
-### 1. Personnaliser les fichiers
+### 1. Customize Files
 
 ```bash
-# Éditez INITIAL.md avec le contexte de votre projet
-# Éditez CLAUDE.md avec les règles spécifiques
+# Edit INITIAL.md with your project context
+# Edit CLAUDE.md with specific rules
 
-# Optionnel: créer .claude/settings.local.json
-# (pour configuration locale non versionnée)
+# Optional: create .claude/settings.local.json
+# (for local non-versioned configuration)
 ```
 
-### 2. Tester les commandes
+### 2. Test Commands
 
 ```bash
-# Dans Claude Code, essayez:
+# In Claude Code, try:
 /primer
 /validation:code-review
 /commit
 ```
 
-### 3. Ajouter vos propres commandes
+### 3. Add Your Own Commands
 
 ```bash
-# Créez de nouvelles commandes dans .claude/commands/
-# Exemple: .claude/commands/deploy.md
+# Create new commands in .claude/commands/
+# Example: .claude/commands/deploy.md
 
-# Utilisez-les avec /deploy
+# Use them with /deploy
 ```
 
 ---
 
-## 📝 Créer vos propres commandes
+## 📝 Creating Your Own Commands
 
-Les commandes sont de simples fichiers Markdown avec des variables :
+Commands are simple Markdown files with variables:
 
 ```markdown
-<!-- .claude/commands/ma-commande.md -->
+<!-- .claude/commands/my-command.md -->
 
-Vous êtes un expert en $1.
+You are an expert in $1.
 
-Analysez le code et proposez des améliorations pour: $ARGUMENTS
+Analyze the code and propose improvements for: $ARGUMENTS
 
-Focus sur les best practices.
+Focus on best practices.
 ```
 
-**Variables disponibles:**
-- `$1`, `$2`, `$3` - Arguments positionnels
-- `$ARGUMENTS` - Tous les arguments comme une chaîne
-- `$PLAN` - Plan de la session précédente (si existe)
+**Available Variables:**
+- `$1`, `$2`, `$3` - Positional arguments
+- `$ARGUMENTS` - All arguments as a string
+- `$PLAN` - Previous session plan (if exists)
 
-**Utilisation:**
+**Usage:**
 ```bash
-/ma-commande "React" "hooks" "performance"
+/my-command "React" "hooks" "performance"
 # $1 = "React"
 # $2 = "hooks"
 # $3 = "performance"
@@ -289,44 +289,44 @@ Focus sur les best practices.
 
 ## 🎓 Best Practices
 
-### 1. Commencer simple
-- Utilisez d'abord le workflow de base (`/primer`, `/create-plan`, `/execute-plan`)
-- Passez au PIV workflow quand vous êtes à l'aise
+### 1. Start Simple
+- Use basic workflow first (`/primer`, `/create-plan`, `/execute-plan`)
+- Move to PIV workflow when comfortable
 
-### 2. Toujours valider
-- Utilisez `/validation:code-review` avant de commit
-- Utilisez `/validation:validate` pour les features critiques
+### 2. Always Validate
+- Use `/validation:code-review` before committing
+- Use `/validation:validate` for critical features
 
-### 3. Documenter
-- Utilisez `/create-prd` pour les features importantes
-- Gardez CLAUDE.md à jour avec les règles projet
+### 3. Document
+- Use `/create-prd` for important features
+- Keep CLAUDE.md up to date with project rules
 
-### 4. Commit proprement
-- Utilisez toujours `/commit` pour créer des commits clairs
-- Laissez Claude générer les messages de commit
+### 4. Commit Cleanly
+- Always use `/commit` to create clear commits
+- Let Claude generate commit messages
 
-### 5. Personnaliser
-- Créez vos propres commandes pour votre workflow
-- Adaptez les commandes existantes si besoin
+### 5. Customize
+- Create your own commands for your workflow
+- Adapt existing commands if needed
 
 ---
 
-## 🔗 Ressources
+## 🔗 Resources
 
-- [Documentation Claude Code](https://docs.anthropic.com/claude/docs/claude-code)
+- [Claude Code Documentation](https://docs.anthropic.com/claude/docs/claude-code)
 - [Archon Workflow Example](https://github.com/coleam00/Archon/tree/main/use-cases/archon-example-workflow)
 - [Context Engineering Intro](https://github.com/coleam00/context-engineering-intro)
 
 ---
 
-## 📄 Licence
+## 📄 License
 
-Libre d'utilisation pour vos projets.
+Free to use for your projects.
 
 ---
 
 ## 🆘 Support
 
-Des questions ? Ouvrez une issue sur le repo !
+Questions? Open an issue on the repo!
 
 **Happy coding with Claude! 🤖✨**
