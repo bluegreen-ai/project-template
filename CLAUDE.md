@@ -18,6 +18,42 @@ This ensures the codebase remains accessible to international contributors while
 
 ---
 
+## Archon MCP Server Integration
+
+**IMPORTANT**: This project uses Archon MCP server for knowledge management and task tracking.
+
+### Archon RAG (Knowledge Base)
+**Priority**: ⭐ HIGH - Always use when available
+
+During planning (`/core_piv_loop:plan-feature`):
+- Use `mcp__archon__rag_get_available_sources()` to list available documentation
+- Search with `mcp__archon__rag_search_knowledge_base(query="...")` for patterns
+- Find code examples with `mcp__archon__rag_search_code_examples(query="...")`
+
+**Tips:**
+- Keep queries short (2-5 keywords)
+- Search before implementing new features
+- Reference found documentation in plans
+
+### Archon Task Management
+**Priority**: Medium - Automated by `/core_piv_loop:execute`
+
+The execute command automatically:
+- Creates project in Archon if project ID specified in CLAUDE.md
+- Creates all tasks from plan in Archon
+- Tracks task status (todo → doing → review → done)
+
+**Manual override**: You can specify project ID for reuse:
+```markdown
+## Archon Project
+Project ID: proj-abc123  # Reuse existing project
+```
+
+### Current Project
+[Specify Archon project ID if this is part of a larger project]
+
+---
+
 ## Project Type
 [Describe: Web app, CLI tool, library, API, etc.]
 
