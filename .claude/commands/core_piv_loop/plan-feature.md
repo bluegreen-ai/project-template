@@ -110,24 +110,44 @@ So that <benefit/value>
 - Identify performance optimization patterns
 - Document security considerations
 
-**If Archon RAG is available and relevant:**
-- Use `mcp__archon__rag_get_available_sources()` to see available documentation
-- Search for relevant patterns: `mcp__archon__rag_search_knowledge_base(query="...")`
-- Find code examples: `mcp__archon__rag_search_code_examples(query="...")`
-- Focus on implementation patterns, best practices, and similar features
+**Archon RAG Documentation (PREFERRED when available):**
+
+Archon provides inline documentation that's more actionable than external URLs during implementation.
+
+1. **Check available sources**: `mcp__archon__rag_get_available_sources()`
+2. **Test relevant searches** for each technology in the feature:
+   - `rag_search_knowledge_base(query="...", source_id="...")` for concepts
+   - `rag_search_code_examples(query="...", source_id="...")` for code patterns
+3. **Evaluate quality**: Run test queries and verify results are useful
+4. **Document working queries** in the plan output (see format below)
 
 **Compile Research References:**
 
-```markdown
-## Relevant Documentation
+When Archon documentation is available for the relevant technologies, include the tested RAG queries in the plan output:
 
-- [Library Official Docs](https://example.com/docs#section)
-  - Specific feature implementation guide
-  - Why: Needed for X functionality
-- [Framework Guide](https://example.com/guide#integration)
-  - Integration patterns section
-  - Why: Shows how to connect components
+```markdown
+## Relevant Documentation - USE ARCHON RAG BEFORE IMPLEMENTING!
+
+**Archon provides inline documentation. Use these searches:**
+
+#### [Technology Name] (source_id: `abc123...`)
+\`\`\`
+rag_search_knowledge_base(query="specific feature", source_id="abc123...")
+\`\`\`
+Returns: [Brief description of what this query returns]
+
+#### [Another Technology] (source_id: `def456...`)
+\`\`\`
+rag_search_code_examples(query="pattern name", source_id="def456...")
+\`\`\`
+Returns: [Brief description of what this query returns]
+
+**Fallback URLs (if Archon unavailable):**
+- [Library Official Docs](https://example.com/docs#section) - Why: Needed for X
+- [Framework Guide](https://example.com/guide#integration) - Why: Shows Y pattern
 ```
+
+**Key principle**: Test Archon queries during planning, include only queries that return useful results, and keep external URLs as fallbacks.
 
 ### Phase 4: Deep Strategic Thinking
 
@@ -211,14 +231,25 @@ So that <benefit/value>
 - `path/to/new_model.py` - Data model for Y resource
 - `tests/path/to/test_new_service.py` - Unit tests for new service
 
-### Relevant Documentation YOU SHOULD READ THESE BEFORE IMPLEMENTING!
+### Relevant Documentation - USE ARCHON RAG BEFORE IMPLEMENTING!
 
-- [Documentation Link 1](https://example.com/doc1#section)
-  - Specific section: Authentication setup
-  - Why: Required for implementing secure endpoints
-- [Documentation Link 2](https://example.com/doc2#integration)
-  - Specific section: Database integration
-  - Why: Shows proper async database patterns
+**Archon provides inline documentation. Use these searches:**
+
+#### [Technology Name] (source_id: `source_id_here`)
+```
+rag_search_knowledge_base(query="specific feature", source_id="source_id_here")
+```
+Returns: [Brief description of what this query returns]
+
+#### [Another Technology] (source_id: `source_id_here`)
+```
+rag_search_code_examples(query="pattern name", source_id="source_id_here")
+```
+Returns: [Brief description of what this query returns]
+
+**Fallback URLs (if Archon unavailable):**
+- [Documentation Link 1](https://example.com/doc1#section) - Why: Required for X
+- [Documentation Link 2](https://example.com/doc2#integration) - Why: Shows Y pattern
 
 ### Patterns to Follow
 
