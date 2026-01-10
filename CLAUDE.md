@@ -18,12 +18,42 @@ This ensures the codebase remains accessible to international contributors while
 
 ---
 
+## Project Overview
+
+**[Project Name]** - [One sentence description]
+
+**Full specifications**: See `.claude/PRD.md`
+
+---
+
+## Reference Documentation
+
+Read these documents when working on specific areas. This keeps global context light while providing deep knowledge when needed.
+
+| Document | When to Read |
+|----------|--------------|
+| `.claude/PRD.md` | Understanding project scope, features, architecture |
+| `.claude/STATUS.md` | Current sprint priorities, what's done, next actions |
+| `.claude/reference/*.md` | Task-specific patterns (frontend, backend, testing, etc.) |
+
+**How to use**: Only read the relevant reference file when working on that specific area. Don't load all files at once.
+
+---
+
+## Tech Stack
+
+- **Language**: [e.g., TypeScript, Python]
+- **Framework**: [e.g., Next.js, FastAPI]
+- **Database**: [e.g., PostgreSQL, Supabase]
+- **Testing**: [e.g., Jest, pytest]
+
+---
+
 ## Archon MCP Server Integration
 
 **IMPORTANT**: This project uses Archon MCP server for knowledge management and task tracking.
 
 ### Archon RAG (Knowledge Base)
-**Priority**: ⭐ HIGH - Always use when available
 
 During planning (`/core_piv_loop:plan-feature`):
 - Use `mcp__archon__rag_get_available_sources()` to list available documentation
@@ -33,42 +63,26 @@ During planning (`/core_piv_loop:plan-feature`):
 **Tips:**
 - Keep queries short (2-5 keywords)
 - Search before implementing new features
-- Reference found documentation in plans
 
 ### Archon Task Management
-**Priority**: Medium - Automated by `/core_piv_loop:execute`
 
 The execute command automatically:
-- Creates project in Archon if project ID specified in CLAUDE.md
+- Creates project in Archon if project ID specified
 - Creates all tasks from plan in Archon
 - Tracks task status (todo → doing → review → done)
 
-**Manual override**: You can specify project ID for reuse:
-```markdown
-## Archon Project
-Project ID: proj-abc123  # Reuse existing project
-```
-
 ### Current Project
-[Specify Archon project ID if this is part of a larger project]
+
+**Archon Project ID**: [Specify if part of a larger project]
 
 ---
-
-## Project Type
-[Describe: Web app, CLI tool, library, API, etc.]
-
-## Tech Stack
-- **Language**: [e.g., TypeScript, Python, etc.]
-- **Framework**: [e.g., Express, FastAPI, etc.]
-- **Database**: [e.g., PostgreSQL, MongoDB, etc.]
-- **Testing**: [e.g., Jest, pytest, etc.]
 
 ## Code Style & Conventions
 
 ### Naming
-- Files: `kebab-case.ts`
+- Files: `kebab-case.ts` / `snake_case.py`
 - Classes: `PascalCase`
-- Functions: `camelCase`
+- Functions: `camelCase` (JS) / `snake_case` (Python)
 - Constants: `UPPER_SNAKE_CASE`
 
 ### File Organization
@@ -80,39 +94,41 @@ src/
 └── types/         # Type definitions
 ```
 
+---
+
 ## Development Rules
 
 ### Type Safety
-- [ ] Use strict TypeScript (no `any` without justification)
-- [ ] All functions must have return type annotations
-- [ ] All parameters must have type annotations
+- Use strict TypeScript (no `any` without justification)
+- All functions must have return type annotations
 
 ### Testing
-- [ ] Unit tests required for all new features
-- [ ] Integration tests for critical flows
-- [ ] Minimum 80% coverage
+- Unit tests required for all new features
+- Integration tests for critical flows
 
 ### Documentation
-- [ ] Update README when adding features
-- [ ] Document complex algorithms
-- [ ] Add JSDoc comments for public APIs
+- Update README when adding features
+- Document complex algorithms
 
 ### Git Workflow
-- [ ] Meaningful commit messages
-- [ ] No commits with failing tests
-- [ ] No commits with linting errors
+- Meaningful commit messages
+- No commits with failing tests
+- No commits with linting errors
+
+---
 
 ## Common Gotchas
+
 [List specific issues Claude should watch for in your project]
 
-Example:
 - Don't forget to update the schema when adding database fields
 - Always use parameterized queries (never string concatenation)
 - Check for null before accessing nested properties
 
-## External Resources
-[Links to important documentation]
+---
 
-- Project docs: [URL]
-- API reference: [URL]
-- Design system: [URL]
+## External Resources
+
+- [Product Requirements](.claude/PRD.md)
+- [Current Status](.claude/STATUS.md)
+- [Project README](README.md)

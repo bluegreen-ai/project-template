@@ -20,10 +20,10 @@ On Linux, run: `tree -L 3 -I 'node_modules|__pycache__|.git|dist|build'`
 
 ### 2. Read Core Documentation
 
-- Read .agents/PRD.md
-- Read CLAUDE.md or similar global rules file
-- Read README files at project root and major directories
-- Read any architecture documentation
+- Read `.claude/PRD.md` (Product Requirements Document - the "north star")
+- Read `.claude/STATUS.md` (current sprint status, priorities, next actions)
+- Read `CLAUDE.md` (global rules and conventions)
+- Read `README.md` at project root
 
 ### 3. Identify Key Files
 
@@ -72,3 +72,23 @@ Provide a concise summary covering:
 - Any immediate observations or concerns
 
 **Make this summary easy to scan - use bullet points and clear headers.**
+
+---
+
+## Next Steps
+
+After presenting the summary, ask the user:
+
+> **Based on the PRD and current status, what should we build next?**
+
+This ensures alignment with project goals before starting any new feature work.
+
+---
+
+## Context Reset Reminder
+
+After planning a feature (using `/core_piv_loop:plan-feature`), remember to:
+1. Use `/clear` to reset context
+2. Then use `/core_piv_loop:execute` with the plan file
+
+This ensures the execution context is clean and focused on the plan only.

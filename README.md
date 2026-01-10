@@ -5,9 +5,14 @@ Complete starter template for new projects with Claude Code. Includes battle-tes
 ## 📦 Contents
 
 ### Configuration Files
-- **CLAUDE.md** - Project documentation for Claude Code
+- **CLAUDE.md** - Global rules and conventions (keep lightweight!)
 - **INITIAL.md** - Template for context engineering
 - **INITIAL_EXAMPLE.md** - Context engineering usage example
+
+### Documentation Structure (`.claude/`)
+- **PRD.md** - Product Requirements Document (the "north star")
+- **STATUS.md** - Current sprint, priorities, next actions
+- **reference/** - Task-specific patterns (frontend, backend, etc.)
 
 ### Slash Commands (`.claude/commands/`)
 
@@ -92,6 +97,58 @@ new-project my-new-project
 cd my-new-project
 rm -rf .git && git init
 ```
+
+---
+
+## 🎯 Core Methodology: PRD-First Development
+
+This template implements the **PRD-First Development** methodology, inspired by [Cole Medin's agentic engineering techniques](https://www.youtube.com/watch?v=ttdWPDmBN_4).
+
+### The 5 Key Techniques
+
+| Technique | Implementation |
+|-----------|----------------|
+| **1. PRD-First** | `.claude/PRD.md` is your north star - defines entire scope |
+| **2. Modular Rules** | `CLAUDE.md` stays light, details in `.claude/reference/` |
+| **3. Command-ify Everything** | All workflows are reusable commands |
+| **4. Context Reset** | `/clear` between planning and execution |
+| **5. System Evolution** | `/validation:system-review` improves the process |
+
+### Documentation Structure
+
+```
+.claude/
+├── PRD.md           # North star - scope, features, architecture
+├── STATUS.md        # Current sprint, priorities, next actions
+├── reference/       # Task-specific patterns (loaded only when needed)
+│   ├── frontend-patterns.md
+│   ├── backend-patterns.md
+│   └── testing-patterns.md
+└── commands/        # Reusable workflows
+```
+
+### The Context Reset Pattern
+
+**Critical**: Always reset context between planning and execution!
+
+```bash
+# 1. Prime and plan
+/core_piv_loop:prime
+# → Reads PRD, STATUS, understands codebase
+# → Ask "what should we build next?"
+
+/core_piv_loop:plan-feature "My feature"
+# → Creates detailed plan in .agents/plans/
+
+# 2. CONTEXT RESET
+/clear  # ← This is crucial!
+
+# 3. Execute with clean context
+/core_piv_loop:execute .agents/plans/my-feature.md
+# → Executes with only the plan as context
+```
+
+**Why?** Planning loads lots of codebase context. Execution needs a clean context window to reason about implementation. The plan document contains everything needed.
 
 ---
 
