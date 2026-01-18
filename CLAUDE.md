@@ -3,18 +3,16 @@
 ## Communication Language Policy
 
 **IMPORTANT**: The project maintainer is French-speaking, so:
-- ✅ **Conversations can be in French** (easier for communication and explanations)
-- ⚠️ **All code, documentation, comments, and commit messages MUST be in English**
-- ⚠️ **All project files (README, docs/, etc.) MUST be in English**
+- **Conversations can be in French** (easier for communication and explanations)
+- **All code, documentation, comments, and commit messages MUST be in English**
+- **All project files (README, docs/, etc.) MUST be in English**
 
 This ensures the codebase remains accessible to international contributors while allowing comfortable communication with the maintainer.
 
 **Examples:**
-- ✅ Chat: "Peux-tu m'expliquer comment ça marche ?"
-- ✅ Code: `function calculateTotal() { /* English comments */ }`
-- ✅ Commit: "feat: add user authentication"
-- ❌ Code: `function calculerTotal() { /* commentaires français */ }`
-- ❌ Commit: "ajout: authentification utilisateur"
+- Chat: "Peux-tu m'expliquer comment ça marche ?"
+- Code: `function calculateTotal() { /* English comments */ }`
+- Commit: "feat: add user authentication"
 
 ---
 
@@ -49,31 +47,44 @@ Read these documents when working on specific areas. This keeps global context l
 
 ---
 
-## Archon MCP Server Integration
+## Archon MCP Server (Documentation Search)
 
-**IMPORTANT**: This project uses Archon MCP server for knowledge management and task tracking.
-
-### Archon RAG (Knowledge Base)
-
-During planning (`/core_piv_loop:plan-feature`):
-- Use `mcp__archon__rag_get_available_sources()` to list available documentation
-- Search with `mcp__archon__rag_search_knowledge_base(query="...")` for patterns
-- Find code examples with `mcp__archon__rag_search_code_examples(query="...")`
+Use Archon RAG for documentation search:
+- `rag_get_available_sources` - List available documentation sources
+- `rag_search_knowledge_base` - Search documentation by topic
+- `rag_search_code_examples` - Find code examples
 
 **Tips:**
 - Keep queries short (2-5 keywords)
+- Use `source_id` to filter by technology
 - Search before implementing new features
 
-### Archon Task Management
+---
 
-The execute command automatically:
-- Creates project in Archon if project ID specified
-- Creates all tasks from plan in Archon
-- Tracks task status (todo → doing → review → done)
+## Task Management (TASKS.md System)
 
-### Current Project
+File-based task tracking using markdown files.
 
-**Archon Project ID**: [Specify if part of a larger project]
+**Structure:**
+```
+.claude/
+├── PRD.md              # Vision (stable roadmap)
+├── STATUS.md           # Current focus (what you're working on NOW)
+└── tasks/              # One file per active feature
+    ├── {feature}.md    # Granular tasks for current feature
+    └── _archive/       # Completed features
+```
+
+**Workflow:**
+1. Check `STATUS.md` for current focus and active task file
+2. Read the active task file (e.g., `.claude/tasks/auth.md`)
+3. Mark task `@claude` when starting: `- [ ] @claude Task description`
+4. Mark `[x]` with date when complete: `- [x] Task description ✓ 2026-01-17`
+5. When feature complete, move task file to `_archive/`
+
+**Changing Priorities:**
+- Update `STATUS.md` to point to new focus
+- Create new task file in `.claude/tasks/` if needed
 
 ---
 

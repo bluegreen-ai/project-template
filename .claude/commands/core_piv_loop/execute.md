@@ -1,15 +1,15 @@
 ---
-description: Execute a development plan with full Archon task management integration
+description: Execute a development plan with TASKS.md file-based task tracking
 argument-hint: [plan-file-path]
 ---
 
-# Execute Development Plan with Archon Task Management
+# Execute Development Plan with TASKS.md Tracking
 
-You are about to execute a comprehensive development plan with integrated Archon task management. This workflow ensures systematic task tracking and implementation throughout the entire development process.
+You are about to execute a comprehensive development plan with file-based task tracking. This workflow ensures systematic task tracking and implementation throughout the entire development process.
 
 ## Critical Requirements
 
-**MANDATORY**: Throughout the ENTIRE execution of this plan, you MUST maintain continuous usage of Archon for task management. DO NOT drop or skip Archon integration at any point. Every task from the plan must be tracked in Archon from creation to completion.
+**MANDATORY**: Throughout the ENTIRE execution of this plan, you MUST maintain continuous usage of TASKS.md for task management. Every task from the plan must be tracked from creation to completion using markdown files.
 
 ## Step 1: Read and Parse the Plan
 
@@ -20,26 +20,30 @@ The plan file will contain:
 - References to existing codebase components and integration points
 - Context about where to look in the codebase for implementation
 
-## Step 2: Project Setup in Archon
+## Step 2: Create Task File
 
-1. Check if a project ID is specified in CLAUDE.md for this feature
-   - Look for any Archon project references in CLAUDE.md
-   - If found, use that project ID
+1. Create a task file at `.claude/tasks/{feature-name}.md`
+2. Use the template from `.claude/tasks/_template.md`
+3. Populate with tasks from the plan
+4. Update `.claude/STATUS.md` to point to this task file
 
-2. If no project exists:
-   - Create a new project in Archon using `mcp__archon__manage_project`
-   - Use a descriptive title based on the plan's objectives
-   - Store the project ID for use throughout execution
+## Step 3: Populate Task File
 
-## Step 3: Create All Tasks in Archon
+Extract ALL tasks from the plan and add them to the task file:
 
-For EACH task identified in the plan:
-1. Create a corresponding task in Archon using `mcp__archon__manage_task("create", ...)`
-2. Set initial status as "todo"
-3. Include detailed descriptions from the plan
-4. Maintain the task order/priority from the plan
+```markdown
+## Tasks
 
-**IMPORTANT**: Create ALL tasks in Archon upfront before starting implementation. This ensures complete visibility of the work scope.
+### Phase 1: {Phase Name}
+- [ ] Task 1 from plan
+- [ ] Task 2 from plan
+
+### Phase 2: {Phase Name}
+- [ ] Task 3 from plan
+...
+```
+
+Ensure tasks are ordered by dependency (top-to-bottom execution).
 
 ## Step 4: Codebase Analysis
 
@@ -57,7 +61,11 @@ Before implementation begins:
 For EACH task in sequence:
 
 ### 5.1 Start Task
-- Move the current task to "doing" status in Archon: `mcp__archon__manage_task("update", task_id=..., status="doing")`
+- Mark the current task as in-progress in the task file:
+  ```
+  - [ ] @claude Task description
+  ```
+- Use the Edit tool to make this change
 - Use TodoWrite to track local subtasks if needed
 
 ### 5.2 Implement
@@ -69,18 +77,22 @@ For EACH task in sequence:
 - Ensure code quality and consistency
 
 ### 5.3 Complete Task
-- Once implementation is complete, move task to "review" status: `mcp__archon__manage_task("update", task_id=..., status="review")`
-- DO NOT mark as "done" yet - this comes after validation
+- Mark the task as complete with date:
+  ```
+  - [x] Task description ✓ 2026-01-17
+  ```
+- Use the Edit tool to make this change
+- Proceed to next task
 
 ### 5.4 Proceed to Next
 - Move to the next task in the list
 - Repeat steps 5.1-5.3
 
-**CRITICAL**: Only ONE task should be in "doing" status at any time. Complete each task before starting the next.
+**CRITICAL**: Only ONE task should be in progress at any time. Complete each task before starting the next.
 
 ## Step 6: Validation Phase
 
-After ALL tasks are in "review" status:
+After ALL tasks are complete:
 
 **IMPORTANT: Use the `validator` agent for comprehensive testing**
 1. Launch the validator agent using the Task tool
@@ -99,49 +111,43 @@ Additional validation you should perform:
 - Check for integration issues between components
 - Ensure all acceptance criteria from the plan are met
 
-## Step 7: Finalize Tasks in Archon
+## Step 7: Finalize
 
 After successful validation:
 
-1. For each task that has corresponding unit test coverage:
-   - Move from "review" to "done" status: `mcp__archon__manage_task("update", task_id=..., status="done")`
-
-2. For any tasks without test coverage:
-   - Leave in "review" status for future attention
-   - Document why they remain in review (e.g., "Awaiting integration tests")
+1. Ensure all tasks are marked `[x]` in the task file
+2. Add completion date to the task file header:
+   ```markdown
+   ## Completion
+   - **Started**: 2026-01-17
+   - **Completed**: 2026-01-17
+   - **Commit**: (link to commit when done)
+   ```
+3. Move task file to `.claude/tasks/_archive/` if feature is fully complete
+4. Update `.claude/STATUS.md` with next focus
 
 ## Step 8: Final Report
 
 Provide a summary including:
 - Total tasks created and completed
-- Any tasks remaining in review and why
 - Test coverage achieved
 - Key features implemented
 - Any issues encountered and how they were resolved
 
 ## Workflow Rules
 
-1. **NEVER** skip Archon task management at any point
-2. **ALWAYS** create all tasks in Archon before starting implementation
-3. **MAINTAIN** one task in "doing" status at a time
-4. **VALIDATE** all work before marking tasks as "done"
-5. **TRACK** progress continuously through Archon status updates
+1. **NEVER** skip task tracking at any point
+2. **ALWAYS** create task file before starting implementation
+3. **MAINTAIN** one task in progress at a time (marked with `@claude`)
+4. **VALIDATE** all work before marking feature as complete
+5. **TRACK** progress continuously through task file updates
 6. **ANALYZE** the codebase thoroughly before implementation
 7. **TEST** everything before final completion
 
-## Error Handling
-
-If at any point Archon operations fail:
-1. Retry the operation
-2. If persistent failures, document the issue but continue tracking locally
-3. Never abandon the Archon integration - find workarounds if needed
-
-Remember: The success of this execution depends on maintaining systematic task management through Archon throughout the entire process. This ensures accountability, progress tracking, and quality delivery.
-
 ## Notes
 
-- If you encounter issues not addressed in the plan, document them
-- If you need to deviate from the plan, explain why
+- If you encounter issues not addressed in the plan, document them in the Notes section
+- If you need to deviate from the plan, explain why in the task file
 - If tests fail, fix implementation until they pass
 - Don't skip validation steps
 

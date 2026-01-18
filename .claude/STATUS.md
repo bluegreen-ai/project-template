@@ -6,51 +6,36 @@
 
 ---
 
-## Project Summary
+## Current Focus
 
-[One paragraph describing what this project is and its current state]
+**Task File**: `.claude/tasks/{current-feature}.md`
+
+### Priority Order
+
+1. **[Priority 1]** - [Brief description]
+2. **[Priority 2]** - [Brief description]
+3. **[Nice to have]** - [Brief description]
 
 ---
 
 ## What's DONE
 
-### Phase 1: [Name] - COMPLETE
+### Phase 1: [Name]
 - [x] Task 1
 - [x] Task 2
 
-### Recent Changes
-| Feature | Commit | Details |
-|---------|--------|---------|
+### Recent Commits
+| Feature | Commit | Date |
+|---------|--------|------|
 | ... | ... | ... |
 
 ---
 
-## Current Sprint: [Sprint Name]
+## Architecture
 
-### Priority 1: [Feature/Task]
-**Goal**: [What we're trying to achieve]
-
-**Tasks**:
-- [ ] Task 1
-- [ ] Task 2
-
-### Priority 2: [Feature/Task]
-- [ ] Task 1
-- [ ] Task 2
-
----
-
-## Next Up (Backlog)
-
-- [ ] Future task 1
-- [ ] Future task 2
-
----
-
-## Technical Debt
-
-- [ ] Item 1
-- [ ] Item 2
+```
+[Simple ASCII diagram of your architecture]
+```
 
 ---
 
@@ -60,8 +45,8 @@
 # Development
 cd [folder] && [dev command]
 
-# Validation
-[validation commands]
+# Tests
+[test commands]
 
 # Build
 [build commands]
@@ -71,22 +56,31 @@ cd [folder] && [dev command]
 
 ## Key Files
 
-### Configuration
-- `/CLAUDE.md` - Project guidelines
-- `/.claude/PRD.md` - Product requirements
-- `/.env` - Environment variables
-
-### Entry Points
-- `[main entry file]` - [Description]
-- `[other key file]` - [Description]
+```
+src/
+├── main.py              # Entry point
+├── config.py            # Configuration
+└── ...
+```
 
 ---
 
-## Archon Project
+## Timeline
 
-**Project ID**: [If using Archon MCP]
-**Status**: [Current status]
+| Day | Target |
+|-----|--------|
+| ... | ... |
 
 ---
 
-**Next Action**: [What to do next]
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | ... |
+| Backend | ... |
+| Database | ... |
+
+---
+
+**Next Action**: Read `.claude/tasks/{current-feature}.md` and start with first unchecked task.
