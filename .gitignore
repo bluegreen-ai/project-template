@@ -1,6 +1,9 @@
 # Claude Code local settings
 .claude/settings.local.json
 
+# Session handoff (ephemeral, not versioned)
+/HANDOFF.md
+
 # OS files
 .DS_Store
 .DS_Store?

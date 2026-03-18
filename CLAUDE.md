@@ -24,17 +24,33 @@
 
 ---
 
-## Reference Documentation
+## Context System (3 tiers)
 
-Read only when working on specific areas (keeps context light).
+Context is organized in progressive disclosure — load only what you need:
+
+### Tier 1: Global Rules (this file)
+
+Always loaded. Keep lean (<100 lines of actual rules). If removing a line wouldn't cause mistakes, cut it.
+
+### Tier 2: Path-Scoped Rules (`.claude/rules/`)
+
+Auto-loaded when you work on matching files. Each rule has a `paths:` frontmatter with glob patterns.
+
+Example: `.claude/rules/frontend.md` loads when editing `src/frontend/**/*.tsx`.
+
+### Tier 3: Reference & Deep Docs
+
+| Location | When to read |
+|----------|--------------|
+| `.claude/reference/` | Manually, for reusable patterns and code examples |
+| `.claude/docs/` | Via sub-agents, for heavy guides (100+ lines) |
+
+### Always-Available Documents
 
 | Document | When to Read |
 |----------|--------------|
 | `.claude/PRD.md` | Project scope, features, architecture |
 | `.claude/STATUS.md` | Current sprint, priorities, next actions |
-| `.claude/reference/error-handling.md` | Error handling patterns |
-| `.claude/reference/cross-platform.md` | Cross-platform compatibility |
-| `.claude/reference/archon-rag.md` | Documentation search with Archon MCP |
 
 ---
 
@@ -69,7 +85,7 @@ Read only when working on specific areas (keeps context light).
 ## Core Principles
 
 - **Fix forward** — no backward compatibility, remove deprecated code immediately
-- **Fail fast** — detailed errors over graceful failures (see `reference/error-handling.md`)
+- **Fail fast** — detailed errors over graceful failures
 - **KISS / DRY / YAGNI** — simple, no repetition, no overbuilding
 - **Clean comments** — describe functionality, not changes (avoid "LEGACY", "REMOVED", "SIMPLIFIED")
 
@@ -80,6 +96,13 @@ Read only when working on specific areas (keeps context light).
 - Test files: `*.test.ts` / `test_*.py`
 - Run before commit
 - Prefer integration tests over unit tests for APIs
+
+---
+
+## Session Management
+
+- Use `/handoff` before ending long sessions to capture state for the next session
+- Use `/commit` with the `Context:` section when AI context files change
 
 ---
 
